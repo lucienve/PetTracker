@@ -12,21 +12,25 @@ function Tooltips:OnLoad()
 end
 
 function Tooltips.OnUnit(tip)
-	local name = TooltipUtil.GetDisplayedUnit(tip)
-	local success, specie = pcall(C_PetJournal.FindPetIDByName, name)
-	if success and specie then
-		local owned = Addon.Specie(specie):GetOwnedText()
-		if owned then
-			local owned = DIM_GREEN_FONT_COLOR:WrapTextInColorCode(owned)
+	if TooltipUtil and TooltipUtil.GetDisplayedUnit then
+		local success, name = pcall(TooltipUtil.GetDisplayedUnit, tip)
+		if success and name then
+			local success, specie = pcall(C_PetJournal.FindPetIDByName, name)
+			if success and specie then
+				local owned = Addon.Specie(specie):GetOwnedText()
+				if owned then
+					local owned = DIM_GREEN_FONT_COLOR:WrapTextInColorCode(owned)
 
-			for i = 1, tip:NumLines() do
-				local line, text = Tooltips.GetLine(tip, i)
-				if text:find('^' .. COLLECTED) then
-					return line:SetText(owned)
+					for i = 1, tip:NumLines() do
+						local line, text = Tooltips.GetLine(tip, i)
+						if text:find('^' .. COLLECTED) then
+							return line:SetText(owned)
+						end
+					end
+
+					tip:AddLine(owned)
 				end
 			end
-
-			tip:AddLine(owned)
 		end
 	end
 end
