@@ -1,3 +1,8 @@
+### 12.0.14
+* __Retail:__ Added compatibility to map addons like TownTag (co-authored by _lucienve_).
+* __Retail:__ Fixed taint error in dungeons when mouse-overing units (co-authored by _lucienve_).
+* Updated submodule git protocol _(by lucienve)_.
+
 ### 12.0.13
 * __Retail:__ Largely improved performance of objectives tracker.
 * __Burning Crusade:__ Updated TOC.
