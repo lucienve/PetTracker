@@ -1,3 +1,6 @@
+## 12.1
+* Updated for The Curse of Ula'tek.
+
 ### 12.0.14
 * __Retail:__ Added compatibility to map addons like TownTag (co-authored by _lucienve_).
 * __Retail:__ Fixed taint error in dungeons when mouse-overing units (co-authored by _lucienve_).
